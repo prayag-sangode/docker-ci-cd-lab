@@ -70,7 +70,3 @@ docker volume prune -f
 
 **Outcome:** Automated Docker CI/CD pipeline with EC2 deployment and live Nginx container.
 
-
-
-If you want, I can make an **even one-screen version** perfect for students or lab manuals. Do you want me to do that?
-```
