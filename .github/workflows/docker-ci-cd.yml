@@ -41,8 +41,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}     # private key stored as secret
           script: |
             # Stop & remove existing container if exists
-            docker stop gitlab-ci-demo || true
-            docker rm gitlab-ci-demo || true
+            docker stop gitlab-ci-cd-demo || true
+            docker rm gitlab-ci-cd-demo || true
 
             # Cleanup unused Docker resources
             docker system prune -af
