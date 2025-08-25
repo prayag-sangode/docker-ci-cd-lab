@@ -22,7 +22,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t prayag/gitlab-ci-demo:latest .
+      run: docker build -t prayags/gitlab-ci-demo:latest .
 
     - name: Push Docker image
       run: docker push prayags/gitlab-ci-demo:latest
