@@ -26,11 +26,11 @@ jobs:
 
       # Build Docker image
       - name: Build Docker image
-        run: docker build -t prayags/gitlab-ci-cd-demo:latest .
+        run: docker build -t prayags/docker-ci-cd-demo:latest .
 
       # Push Docker image
       - name: Push Docker image
-        run: docker push prayags/gitlab-ci-cd-demo:latest
+        run: docker push prayags/docker-ci-cd-demo
 
       # Deploy to EC2
       - name: Deploy to EC2
@@ -41,15 +41,15 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}     # private key stored as secret
           script: |
             # Stop & remove existing container if exists
-            docker stop gitlab-ci-cd-demo || true
-            docker rm gitlab-ci-cd-demo || true
+            docker stop docker-ci-cd-demo || true
+            docker rm prayags/docker-ci-cd-demo || true
 
             # Cleanup unused Docker resources
             docker system prune -af
             docker volume prune -f
 
             # Pull latest image
-            docker pull prayags/gitlab-ci-cd-demo:latest
+            docker pull prayags/docker-ci-cd-demo:latest
 
             # Run container
-            docker run -d -p 80:80 --name gitlab-ci-cd-demo prayags/gitlab-ci-cd-demo:latest
+            docker run -d -p 80:80 --name docker-ci-cd-demo prayags/docker-ci-cd-demo:latest
